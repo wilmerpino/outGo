@@ -1,0 +1,26 @@
+﻿<h4>Facturas</h4>
+<div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default active">Transactions</button>
+    <button type="button" class="btn btn-default">Deposits</button>
+    <button type="button" class="btn btn-default">Withdrawals</button>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Factura #</th>
+            <th>Fecha</th>
+            <th>Comercio</th>
+            <th>Description</th>
+            <th class="text-right">Monto</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let factura of facturas">
+            <td>{{ factura.num_factura }}</td>
+            <td>{{ factura.fecha | date}}</td>
+            <td>{{ factura.id_comercio}}</td>
+            <td>{{ factura.detalle }}</td>
+            <td class="text-right">{{ factura.monto_pesos | currency:"CLP":true:"1.2-2"}}</td>
+        </tr>
+    </tbody>
+</table>

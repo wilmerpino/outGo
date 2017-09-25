@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<efcore p1:Guid="42a6212d-d0ca-4f6e-b47a-53ef52d40952" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0">
+  <class name="Comercios" entity-set="Comercios" table="comercios" schema="dbo" p1:Guid="9cb7d7be-e7e9-4740-b796-ac8e7871d379">
+    <id name="Id" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="8eeaae97-0039-4505-ad5d-0b1dce3bcfff">
+      <column name="id" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="Nombre" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="e19bf617-dbb0-4da6-9514-51f00cfd09b1">
+      <column name="nombre" not-null="True" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Ublicacion" type="String" p1:nullable="True" p1:ValidateMaxLength="50" p1:ValidateRequired="false" p1:Guid="7272ddb7-a22d-4736-a120-ee12ebbb2781">
+      <column name="ublicacion" not-null="False" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Tipo" type="String" p1:nullable="True" p1:ValidateMaxLength="25" p1:ValidateRequired="false" p1:Guid="eddadfe8-7746-4bd9-9157-f56d82215b14">
+      <column name="tipo" not-null="False" length="25" sql-type="varchar" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Detalles" entity-set="Detalles" table="detalles" schema="dbo" p1:Guid="37ec76bb-91fb-47d5-b9d3-0992e40cb5f6">
+    <composite-id>
+      <key-property name="IdFactura" type="Int32" p1:ValidateRequired="true" p1:Guid="151ea459-bda2-4d8d-8bdf-59b116d8f2b0">
+        <column name="id_factura" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+      </key-property>
+      <key-property name="TipoGasto" type="String" p1:ValidateMaxLength="25" p1:ValidateRequired="true" p1:Guid="4f0387af-7154-41c1-a4ed-224bdcf649d0">
+        <column name="tipo_gasto" not-null="True" length="25" sql-type="varchar" p1:unicode="False" />
+      </key-property>
+    </composite-id>
+    <property name="Monto" type="Double" p1:ValidateRequired="true" p1:Guid="c8f9a19e-2603-4d5c-9adc-b729603389eb">
+      <column name="monto" not-null="True" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Facturas" entity-set="Facturas" table="facturas" schema="dbo" p1:Guid="3af1816c-29a7-4776-b168-ef2a35cd80b2">
+    <id name="Id" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="6de1f0ff-30b0-49d0-9442-54d429594191">
+      <column name="id" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="IdComercio" type="Int32" p1:ValidateRequired="true" p1:Guid="e01c6943-560c-4454-ac90-a57a7ce08211">
+      <column name="id_comercio" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="NumFactura" type="String" p1:ValidateMaxLength="10" p1:ValidateRequired="true" p1:Guid="9c0c9620-73ef-4009-bb73-427e0ec5bac5">
+      <column name="num_factura" not-null="True" length="10" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Fecha" type="DateTime" p1:ValidateRequired="true" p1:Guid="5256f46c-8678-4dba-aaa3-2c6c8b224a58">
+      <column name="fecha" not-null="True" sql-type="date" p1:unicode="False" />
+    </property>
+    <property name="MontoPesos" type="Double" p1:ValidateRequired="true" p1:Guid="e51b0448-1e1c-4e49-a7aa-5518a81edc26">
+      <column name="monto_pesos" not-null="True" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+    <property name="MontoDolares" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="5914dd11-73a0-4459-ac3b-3e33953342b9">
+      <column name="monto_dolares" not-null="False" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+    <property name="ComisionDolares" type="Double" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="0d1842e9-2def-439d-908d-3e70da20ac13">
+      <column name="comision_dolares" not-null="False" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+    <property name="Detalle" type="String" p1:nullable="True" p1:ValidateMaxLength="255" p1:ValidateRequired="false" p1:Guid="10b8adad-36e3-45f1-8a5d-aa62a15ac868">
+      <column name="detalle" not-null="False" length="255" sql-type="varchar" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Pagos" entity-set="Pagos" table="pagos" schema="dbo" p1:Guid="15c56a3d-9bba-4275-9678-44406ead0c75">
+    <id name="Id" type="Int32" p1:ValidateRequired="true" p1:Guid="3274732f-30cb-412e-99f0-3dbe3e10568f">
+      <column name="id" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="IdFactura" type="Int32" p1:ValidateRequired="true" p1:Guid="3ab7472c-87d7-4463-94ef-24c911e7bbb8">
+      <column name="id_factura" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="IdPersona" type="Int32" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="d31ba5f7-ce8b-4a00-b3a6-88c9b9da619f">
+      <column name="id_persona" not-null="False" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="MontoPagado" type="Double" p1:ValidateRequired="true" p1:Guid="33a6de70-44da-4c5f-805d-bbf3f6818de3">
+      <column name="monto_pagado" not-null="True" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Personas" entity-set="Personas" table="personas" schema="dbo" p1:Guid="f0ffe06c-6bec-43f5-891d-ff134449ff7d">
+    <id name="Id" type="Int32" p1:ValidateRequired="true" p1:Guid="ecf7bb5b-4250-4ab3-8e18-4794c6794071">
+      <column name="id" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="Nombre" type="String" p1:ValidateMaxLength="50" p1:ValidateRequired="true" p1:Guid="da7ebad3-c2de-46ee-8d24-14c038441a8f">
+      <column name="nombre" not-null="True" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Email" type="String" p1:nullable="True" p1:ValidateMaxLength="50" p1:ValidateRequired="false" p1:Guid="9739024e-fdf2-474b-8842-09a3b8cdf17b">
+      <column name="email" not-null="False" length="50" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="Password" type="String" p1:nullable="True" p1:ValidateMaxLength="255" p1:ValidateRequired="false" p1:Guid="79a4e0c8-c71d-447d-941f-772ecf04b4d5">
+      <column name="password" not-null="False" length="255" sql-type="varchar" p1:unicode="False" />
+    </property>
+  </class>
+  <class name="Relaciones" entity-set="Relaciones" table="relaciones" schema="dbo" p1:Guid="487b105b-41dc-4339-9647-baf8cc453ca5">
+    <id name="Id" type="Int32" value-generated="OnAdd" p1:ValidateRequired="true" p1:Guid="73080b02-d038-454c-b693-fd57420aff0a">
+      <column name="id" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </id>
+    <property name="IdFactura" type="Int32" p1:ValidateRequired="true" p1:Guid="070f61f1-fc0d-4298-93b2-3945dea8d5d1">
+      <column name="id_factura" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="Monto" type="Double" p1:ValidateRequired="true" p1:Guid="42beb8a5-d59d-45f8-a381-384eb2c8cce1">
+      <column name="monto" not-null="True" precision="53" sql-type="float" p1:unicode="False" />
+    </property>
+    <property name="Descripcion" type="String" p1:ValidateMaxLength="255" p1:ValidateRequired="true" p1:Guid="171f806f-a81b-43ad-a31d-cb8c53684496">
+      <column name="descripcion" not-null="True" length="255" sql-type="varchar" p1:unicode="False" />
+    </property>
+    <property name="IdPersona" type="Int32" p1:ValidateRequired="true" p1:Guid="367abfd5-caee-414c-aef2-ffe728600397">
+      <column name="id_persona" not-null="True" precision="10" scale="0" sql-type="int" p1:unicode="False" />
+    </property>
+    <property name="GastoPersonal" type="Boolean" p1:nullable="True" p1:ValidateRequired="false" p1:Guid="227e8a09-a5ab-4c1f-a071-dad4d157e92f">
+      <column name="gasto_personal" default="0" not-null="False" sql-type="bit" p1:unicode="False" />
+    </property>
+  </class>
+  <associations>
+    <association name="Facturas_Detalles" cardinality="OneToMany" p1:Guid="352e97a0-27be-4a85-8b55-a4f568fcd789">
+      <end1 multiplicity="One" name="Facturas" class="Detalles" relation-class="Facturas" constrained="True" p1:Guid="a0886e26-3922-41da-8e55-b84cd0c0bf96">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Detalles" class="Facturas" relation-class="Detalles" p1:Guid="c2e5e312-7e40-4568-9ea4-c66f36fc2cb3">
+        <property name="IdFactura" />
+      </end2>
+    </association>
+    <association name="Comercios_Facturas" cardinality="OneToMany" p1:Guid="e4b961e3-a00b-4faf-b1b0-634f19a41d28">
+      <end1 multiplicity="One" name="Comercios" class="Facturas" relation-class="Comercios" constrained="True" p1:Guid="97317ea1-26cf-4dcf-915d-e96855408d87">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Facturas" class="Comercios" relation-class="Facturas" p1:Guid="4e03af4b-dfc2-4514-b6d1-b79d22dfb777">
+        <property name="IdComercio" />
+      </end2>
+    </association>
+    <association name="Facturas_Pagos" cardinality="OneToMany" p1:Guid="229684d7-5b66-4703-9a48-c04d9cfcb58a">
+      <end1 multiplicity="One" name="Facturas" class="Pagos" relation-class="Facturas" constrained="True" p1:Guid="a5cb79de-2970-4fe5-b24f-08ebc6584c69">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Pagos" class="Facturas" relation-class="Pagos" p1:Guid="c1ecd331-3be2-49f6-8c6f-86b21d4b99d7">
+        <property name="IdFactura" />
+      </end2>
+    </association>
+    <association name="Personas_Pagos" cardinality="OneToMany" p1:Guid="b88101d3-2d16-4ab5-bd82-3440696ce583">
+      <end1 multiplicity="ZeroOrOne" name="Personas" class="Pagos" relation-class="Personas" constrained="True" p1:Guid="80485c95-d261-4dc6-824b-4466271e969b">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Pagos" class="Personas" relation-class="Pagos" p1:Guid="9b729b06-1077-4aba-8cd2-c53ec21ff10e">
+        <property name="IdPersona" />
+      </end2>
+    </association>
+    <association name="Facturas_Relaciones" cardinality="OneToMany" p1:Guid="832136aa-a46e-4668-80a2-e56c37b1a22e">
+      <end1 multiplicity="One" name="Facturas" class="Relaciones" relation-class="Facturas" constrained="True" p1:Guid="9d59c63f-f493-4518-bbf5-53f6e041412b">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Relaciones" class="Facturas" relation-class="Relaciones" p1:Guid="5d82ea3b-3e90-4c80-8e54-87dd67f74243">
+        <property name="IdFactura" />
+      </end2>
+    </association>
+    <association name="Personas_Relaciones" cardinality="OneToMany" p1:Guid="4bb9ca75-fb31-45d5-a9ea-4f27780c9fd4">
+      <end1 multiplicity="One" name="Personas" class="Relaciones" relation-class="Personas" constrained="True" p1:Guid="da86e268-7f99-4cd2-972f-8a2ebdd20921">
+        <property name="Id" />
+      </end1>
+      <end2 multiplicity="Many" name="Relaciones" class="Personas" relation-class="Relaciones" p1:Guid="53ea1a36-3e2e-494b-9c86-e23461c6675d">
+        <property name="IdPersona" />
+      </end2>
+    </association>
+  </associations>
+</efcore>

@@ -10,45 +10,45 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Facturas()
         {
-            this.pagos = new HashSet<Pagos>();
-            this.relaciones = new HashSet<Relaciones>();
-            this.detalles = new List<Detalles>();
+            this.Pagos = new HashSet<Pagos>();
+            this.Relaciones = new HashSet<Relaciones>();
+            this.Detalles = new List<Detalles>();
         }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public int id_comercio { get; set; }
+        public int IdComercio { get; set; }
 
         [Required]
-        public string num_factura { get; set; }
+        public string NumFactura { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public System.DateTime fecha { get; set; }
+        public System.DateTime Fecha { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
-        public double monto_pesos { get; set; }
+        public double MontoPesos { get; set; }
 
         [DataType(DataType.Currency)]
-        public Nullable<double> monto_dolares { get; set; }
+        public Nullable<double> MontoDolares { get; set; }
 
         [DataType(DataType.Currency)]
-        public Nullable<double> comision_dolares { get; set; }
+        public Nullable<double> ComisionDolares { get; set; }
 
         [Column(TypeName = "varchar(255)")]
-        public string detalle { get; set; }
+        public string Observaciones { get; set; }
 
-        [ForeignKey("id_comercio")]
-        public virtual Comercios comercios { get; set; }
+        [ForeignKey("IdComercio")]
+        public virtual Comercios Comercios { get; set; }
 
-        public virtual ICollection<Pagos> pagos { get; set; }
+        public virtual ICollection<Pagos> Pagos { get; set; }
 
-        public virtual ICollection<Relaciones> relaciones { get; set; }
+        public virtual ICollection<Relaciones> Relaciones { get; set; }
 
-        public virtual ICollection<Detalles> detalles { get; set; }
+        public virtual ICollection<Detalles> Detalles { get; set; }
     }
 }

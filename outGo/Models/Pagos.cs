@@ -7,24 +7,24 @@
     public partial class Pagos
     {
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public int id_factura { get; set; }
+        public int IdFactura { get; set; }
 
         [Required]
-        public Nullable<int> id_persona { get; set; }
+        public Nullable<int> IdPersona { get; set; }
 
         [Required]
         [DataType(DataType.Currency)]
-        public double monto_pagado { get; set; }
+        public double MontoPagado { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public System.DateTime fecha { get; set; }
+        public System.DateTime Fecha { get; set; }
 
-        public virtual Facturas facturas { get; set; }
-        public virtual Personas personas { get; set; }
+        public virtual Facturas Facturas { get; set; }
+        public virtual Personas Personas { get; set; }
     }
 }

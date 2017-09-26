@@ -8,17 +8,17 @@
     public partial class Relaciones
     {
         [Required]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
-        public int id_factura { get; set; }
+        public int IdFactura { get; set; }
         [Required]
-        public double monto { get; set; }
+        public double Monto { get; set; }
         [Column(TypeName = "varchar(255)")]
-        public string descripcion { get; set; }
-        public int id_persona { get; set; }
-        public Nullable<bool> gasto_personal { get; set; }
+        public string Descripcion { get; set; }
+        public int IdPersona { get; set; }
+        public Nullable<bool> IsGastoPersonal { get; set; }
 
-        public virtual Facturas facturas { get; set; }
-        public virtual Personas personas { get; set; }
+        public virtual Facturas Facturas { get; set; }
+        public virtual Personas Personas { get; set; }
     }
 }

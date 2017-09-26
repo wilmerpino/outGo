@@ -7,14 +7,26 @@
 
     public partial class Detalles
     {
-        public int id_factura { get; set; }
+        public enum Tipo
+        {
+            Comida, 
+            Charcuteria,
+            HigienePersonal,
+            Aseso,
+            Legumbres,
+            Golosinas,
+            Bebidas
+        }
+           
+        public int IdFactura { get; set; }
 
         [Column(TypeName = "varchar(25)")]
-        public string tipo_gasto { get; set; }
+        public string TipoGasto { get; set; }
 
         [Required]
-        public double monto { get; set; }
+        public double Monto { get; set; }
 
-        public virtual Facturas facturas { get; set; }
+        [ForeignKey("IdFactura")]
+        public virtual Facturas Facturas { get; set; }
     }
 }

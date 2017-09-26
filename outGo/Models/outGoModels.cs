@@ -3,8 +3,13 @@ using System.Collections.Generic;
 
 namespace outGo.Models
 {
-    public partial class outGoEntities : DbContext
+    public partial class outGoContext : DbContext
     {
+        /*public outGoContext(DbContextOptions<outGoContext> options)
+            : base(options)
+        {
+        }*/
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Server=(local);Database=outGo;Trusted_Connection=True;");
@@ -16,71 +21,71 @@ namespace outGo.Models
 
             #region Table Definition
                 modelBuilder.Entity<Facturas>()
-                    .ToTable(@"facturas", @"dbo")
-                    .HasKey(c => c.id);
+                    .ToTable(@"Facturas", @"dbo")
+                    .HasKey(c => c.Id);
 
                 modelBuilder.Entity<Detalles>()
-                    .ToTable(@"detalles", @"dbo")
-                    .HasKey(c => new { c.id_factura, c.tipo_gasto });
+                    .ToTable(@"Detalles", @"dbo")
+                    .HasKey(c => new { c.IdFactura, c.TipoGasto });
 
                 modelBuilder.Entity<Comercios>()
-                    .ToTable(@"comercios", @"dbo")
-                    .HasKey(c => c.id);
+                    .ToTable(@"Comercios", @"dbo")
+                    .HasKey(c => c.Id);
 
                 modelBuilder.Entity<Personas>()
-                    .ToTable(@"personas", @"dbo")
-                    .HasKey(c => c.id);
+                    .ToTable(@"Personas", @"dbo")
+                    .HasKey(c => c.Id);
 
                 modelBuilder.Entity<Relaciones>()
-                    .ToTable(@"relaciones", @"dbo")
-                    .HasKey(c => c.id);
+                    .ToTable(@"Relaciones", @"dbo")
+                    .HasKey(c => c.Id);
 
                 modelBuilder.Entity<Pagos>()
-                    .ToTable(@"pagos", @"dbo")
-                    .HasKey(c => c.id);
+                    .ToTable(@"Pagos", @"dbo")
+                    .HasKey(c => c.Id);
             #endregion
 
             #region Property
-                modelBuilder.Entity<Comercios>().Property(b => b.tipo).HasDefaultValue("Supermercado");
-                modelBuilder.Entity<Facturas>().Property(b => b.fecha).HasDefaultValueSql("getdate()");
-                modelBuilder.Entity<Pagos>().Property(b => b.fecha).HasDefaultValueSql("getdate()");
-                modelBuilder.Entity<Detalles>().Property(b => b.tipo_gasto).HasDefaultValue("Comida");                
+                modelBuilder.Entity<Comercios>().Property(b => b.TipoComercio).HasDefaultValue("Supermercado");
+                modelBuilder.Entity<Facturas>().Property(b => b.Fecha).HasDefaultValueSql("getdate()");
+                modelBuilder.Entity<Pagos>().Property(b => b.Fecha).HasDefaultValueSql("getdate()");
+                modelBuilder.Entity<Detalles>().Property(b => b.TipoGasto).HasDefaultValue("Comida");                
             #endregion
 
 
             #region Relationship
             modelBuilder.Entity<Comercios>()
-                    .HasMany(x => x.facturas)
-                    .WithOne(op => op.comercios)
+                    .HasMany(x => x.Facturas)
+                    .WithOne(op => op.Comercios)
                     .IsRequired(true)
-                    .HasForeignKey(@"id_comercio");
+                    .HasForeignKey(@"IdComercio");
 
                 modelBuilder.Entity<Detalles>()
-                    .HasOne(x => x.facturas)
-                    .WithMany(op => op.detalles)
+                    .HasOne(x => x.Facturas)
+                    .WithMany(op => op.Detalles)
                     .IsRequired(true)
-                    .HasForeignKey(@"id_factura");
+                    .HasForeignKey(@"IdFactura");
 
                 modelBuilder.Entity<Facturas>()
-                    .HasMany(x => x.detalles)
-                    .WithOne(op => op.facturas)
+                    .HasMany(x => x.Detalles)
+                    .WithOne(op => op.Facturas)
                     .IsRequired(true)
-                    .HasForeignKey(@"id_factura");
+                    .HasForeignKey(@"IdFactura");
 
                 modelBuilder.Entity<Facturas>()
-                    .HasOne(x => x.comercios)
-                    .WithMany(op => op.facturas)
+                    .HasOne(x => x.Comercios)
+                    .WithMany(op => op.Facturas)
                     .IsRequired(true)
-                    .HasForeignKey(@"id_comercio");
+                    .HasForeignKey(@"IdComercio");
             #endregion     
         }
 
 
-        public virtual DbSet<Comercios> comercios { get; set; }
-        public virtual DbSet<Facturas> facturas { get; set; }
-        public virtual DbSet<Pagos> pagos { get; set; }
-        public virtual DbSet<Relaciones> relaciones { get; set; }
-        public virtual DbSet<Personas> personas { get; set; }
-        public virtual DbSet<Detalles> detalles { get; set; }
+        public virtual DbSet<Comercios> Comercios { get; set; }
+        public virtual DbSet<Facturas> Facturas { get; set; }
+        public virtual DbSet<Pagos> Pagos { get; set; }
+        public virtual DbSet<Relaciones> Relaciones { get; set; }
+        public virtual DbSet<Personas> Personas { get; set; }
+        public virtual DbSet<Detalles> Detalles { get; set; }
     }
 }

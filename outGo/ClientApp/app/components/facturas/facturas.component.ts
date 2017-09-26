@@ -12,7 +12,9 @@ export class FacturasComponent  {
 
     constructor(private facturasService: FacturasService) {
         this.facturasService.get()
-            .then(data => this.facturas = data);
-            console.log(this.facturas);
+            .then(data => this.facturas = data)
+            .then(function (data) { console.log(data); });
+
+            
     }
 }

@@ -16,11 +16,11 @@
     </thead>
     <tbody>
         <tr *ngFor="let factura of facturas">
-            <td>{{ factura.num_factura }}</td>
+            <td>{{ factura.numFactura }}</td>
             <td>{{ factura.fecha | date}}</td>
-            <td>{{ factura.id_comercio}}</td>
-            <td>{{ factura.detalle }}</td>
-            <td class="text-right">{{ factura.monto_pesos | currency:"CLP":true:"1.2-2"}}</td>
+            <td>{{ factura.idComercio}}</td>
+            <td>{{ factura.observaciones}}</td>
+            <td class="text-right">{{ factura.montoPesos | currency:"CLP":true:"1.2-2"}}</td>
         </tr>
     </tbody>
 </table>

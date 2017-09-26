@@ -9,17 +9,25 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Comercios()
         {
-            this.facturas = new HashSet<Facturas>();
+            this.Facturas = new HashSet<Facturas>();
         }
 
-        [Key]
-        public int id { get; set; }
-        [Required]
-        public string nombre { get; set; }
-        public string ublicacion { get; set; }
-        [Required]
-        public string tipo { get; set; }
+        public enum Tipo{
+            Supermercado,
+            Ferretería,
+            Restaurant,
+            Servicios
+        };
 
-        public virtual ICollection<Facturas> facturas { get; set; }
+
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        public string Nombre { get; set; }
+        public string Ublicacion { get; set; }
+        [Required]
+        public string TipoComercio { get; set; }
+
+        public virtual ICollection<Facturas> Facturas { get; set; }
     }
 }

@@ -10,25 +10,25 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personas()
         {
-            this.pagos = new HashSet<Pagos>();
-            this.relaciones = new HashSet<Relaciones>();
+            this.Pagos = new HashSet<Pagos>();
+            this.Relaciones = new HashSet<Relaciones>();
         }
 
         [Key]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required]
         [Column(TypeName = "varchar(50)")]
-        public string nombre { get; set; }
+        public string Nombre { get; set; }
         [Required]
         [Column(TypeName = "varchar(50)")]
-        public string email { get; set; }
+        public string Email { get; set; }
         [Required]
         [Column(TypeName = "varchar(255)")]
-        public string password { get; set; }
+        public string Password { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pagos> pagos { get; set; }
+        public virtual ICollection<Pagos> Pagos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Relaciones> relaciones { get; set; }
+        public virtual ICollection<Relaciones> Relaciones { get; set; }
     }
 }

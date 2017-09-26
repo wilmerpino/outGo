@@ -20,12 +20,16 @@ namespace outGo.Controllers
         {
             try
             {
-                using (var db = new outGoEntities())
+                /*return _context.facturas
+                    .Include(c => c.detalles)
+                    .AsNoTracking()
+                    .ToList();*/
+                using (var db = new outGoContext())
                 {
                     
-                    var facturas = db.facturas
-                        .Include(c => c.comercios)
-                        .Include(c => c.detalles)
+                    var facturas = db.Facturas
+                        .Include(c => c.Comercios)
+                        .Include(c => c.Detalles)
                         .ToList();
 
                     return facturas;
@@ -34,7 +38,7 @@ namespace outGo.Controllers
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex.Message);
-                throw;
+               throw;
             }
         }
 
